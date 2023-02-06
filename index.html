@@ -61,7 +61,6 @@
     orbit.maxDistance = 5;
     orbit.minDistance = 4.5;
     orbit.enableDamping= true;
-    orbit.rotateSpeed = 0.09;
     orbit.update();
 
     const assetLoader = new GLTFLoader();
@@ -72,6 +71,7 @@
         model.scale.y = 8;
         model.scale.x = 8;
         model.scale.z = 8;
+        model.position.y = 0.1;
         renderer.setAnimationLoop(()=> {animate(model,true)})
     }, undefined, function(error) {
         console.error(error);
@@ -80,7 +80,7 @@
 
     function animate (obj,val) {
         if (val) {
-        obj.rotation.y += 0.000001;
+        obj.rotation.y += 0.01;
         }
         renderer.render(scene, camera)
     }
