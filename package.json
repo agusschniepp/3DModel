@@ -1,0 +1,23 @@
+{
+  "name": "cuadroslela",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agusschniepp/agusschniepp.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agusschniepp/agusschniepp.github.io/issues"
+  },
+  "homepage": "https://github.com/agusschniepp/agusschniepp.github.io#readme",
+  "dependencies": {
+    "parcel": "^2.8.3",
+    "three": "^0.149.0"
+  }
+}
