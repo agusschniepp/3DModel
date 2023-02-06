@@ -26,7 +26,7 @@
     import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
     import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
     import {OrbitControls} from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js"
-    const duck = new URL('./lela.glb', import.meta.url)
+    const duck = new URL('./assets/lela.glb', import.meta.url)
     let model;
     let ecena = window;
 
@@ -35,16 +35,10 @@
     document.body.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf1f);
+    scene.background = new THREE.Color(0xf11);
 
-    const directionallight = new THREE.DirectionalLight(0xffffff, 1.2);
-    directionallight.position.y = 10;
-    directionallight.position.z = 10;
-    scene.add(directionallight)
-    const ambientLight = new THREE.AmbientLight(0xffffff);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight)
-    //const lightHelper = new THREE.DirectionalLightHelper(directionallight);
-    //scene.add(lightHelper)
 
     const camera = new THREE.PerspectiveCamera(
         75,
@@ -57,42 +51,28 @@
     const orbit = new OrbitControls(camera, renderer.domElement);
     orbit.enableZoom = true;
     orbit.enablePan = false;
-    orbit.enableDamping = false
-    orbit.maxDistance = 5;
-    orbit.minDistance = 4.5;
-    orbit.enableDamping= true;
+    orbit.maxDistance = 6;
+    orbit.minDistance = 4;
+    orbit.rotateSpeed = .2;
     orbit.update();
 
     const assetLoader = new GLTFLoader();
     assetLoader.load(duck.href, function(gltf){
         model = gltf.scene;
         scene.add(model);
-        model.position.set(0,-1,0);
         model.scale.y = 8;
         model.scale.x = 8;
         model.scale.z = 8;
-        model.position.y = 0.1;
-        renderer.setAnimationLoop(()=> {animate(model,true)})
     }, undefined, function(error) {
         console.error(error);
     });
 
-
-    function animate (obj,val) {
-        if (val) {
-        obj.rotation.y += 0.0000001;
-        }
+    function animate () {
         renderer.render(scene, camera)
     }
-
-    console.log(model)
     
-    ecena.addEventListener('touchstart', () => {
-        renderer.setAnimationLoop(()=> {animate(model,false)})
-    })
-    ecena.addEventListener('touchend', () => {
-        renderer.setAnimationLoop(()=> {animate(model,true)})
-    })
+    renderer.setAnimationLoop(animate)
+
     </script>
 </body>
 </html>
