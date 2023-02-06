@@ -57,12 +57,12 @@
     const orbit = new OrbitControls(camera, renderer.domElement);
     orbit.enableZoom = true;
     orbit.enablePan = true;
-    orbit.enableDamping = true
+    orbit.enableDamping = false
     orbit.maxDistance = 5;
     orbit.minDistance = 4.5;
     orbit.enableDamping= true;
-    orbit.rotateSpeed = 0.06;
-    orbit.panSpeed = 0.03;
+    orbit.rotateSpeed = 0.09;
+    orbit.panSpeed = 0.09;
     orbit.update();
 
     const assetLoader = new GLTFLoader();
